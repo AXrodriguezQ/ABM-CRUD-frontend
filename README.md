@@ -1,3 +1,17 @@
+# User Management System (AMB/CRUD)
+This project is a User Management System that includes a login and an admin panel. It is designed to efficiently and user-friendly manage users.
+
+## Technologies Used
+-  React.js: For building interactive and dynamic user interfaces.
+-  Tailwind CSS: For a modern and responsive design, facilitating the creation of custom styles.
+-  Zustand: For simple and effective state management in the application.
+-  TypeScript: For static typing that improves code quality and maintainability.
+## Features
+-  Login: Secure authentication to access the admin panel.
+-  Admin Panel: Interface for managing users, allowing for creating, reading, updating, and deleting records.
+## Project Structure
+The code structure is organized in a way that allows for easy maintenance and scalability.
+
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
