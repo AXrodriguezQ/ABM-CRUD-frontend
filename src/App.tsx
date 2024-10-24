@@ -1,9 +1,24 @@
-import Login from "./components/Login";
+import { BrowserRouter, Link, Route, Routes } from "react-router-dom"
+import { Login, Dashboard, AddUser, UpdateUser } from "./pages"
 
 function App() {
 
   return (
-    <Login />
+    <BrowserRouter>
+
+      <Routes>
+
+        <Route index element={<Login />} />
+
+        <Route path="/dashboard" element={<Dashboard />} />
+
+        <Route path="/addUser" element={<AddUser />} />
+
+        <Route path="/updateUser/:id" element={<UpdateUser />} />
+
+      </Routes>
+
+    </BrowserRouter>
   )
 }
 

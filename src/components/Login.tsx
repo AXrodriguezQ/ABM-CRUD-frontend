@@ -1,16 +1,28 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { loginRequest } from '../api/auth'
+import { useAuthStore } from '../store/auth'
 import miImagen from '../assets/logo_google.webp';
 
-const Login = () => {
+const LoginComponent = () => {
+    
+    if (localStorage.getItem('session') === 'valid') {
+        window.location.href = '/dashboard';
+    }
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    const handleSubmit = (e) => {
+    const setToken = useAuthStore(state => state.setToken)
+
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        // Aquí podrías agregar la lógica para manejar el inicio de sesión
-        console.log('Email:', email);
-        console.log('Password:', password);
+
+        const resLogin = await loginRequest(email, password)
+
+        localStorage.setItem('session', 'valid');
+        setToken(resLogin.data.token)
+
+        window.location.href = '/dashboard';
     }
 
   return (
@@ -73,4 +85,4 @@ const Login = () => {
   )
 }
 
-export default Login
+export default LoginComponent
