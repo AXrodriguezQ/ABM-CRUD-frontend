@@ -59,8 +59,8 @@ const UpdateUserComponent = () => {
     return (
     <section className='flex justify-center items-center'>
         <NavBar />
-        <article className='w-[85%] ml-[15%] p-6 space-y-12'>
-            <h4 className='text-8xl font-extrabold text-customColor'>Actualiza un usuario!</h4>
+        <article className='xl:w-[85%] w-full xl:ml-[15%] ml-0 md:p-6 space-y-6'>
+            <h4 className='text-4xl md:text-8xl font-extrabold text-customColor p-6'>Actualizar usuario!</h4>
             <div className='flex justify-center items-center flex-col'>
                <form onSubmit={handleSubmit} className='bg-slate-50 p-6 rounded-2xl shadow-2xl hover:shadow-indigo-300 duration-500 space-y-6'>
                     <div className='flex justify-center items-center gap-4'>
