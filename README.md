@@ -6,11 +6,35 @@ This project is a User Management System that includes a login and an admin pane
 -  Tailwind CSS: For a modern and responsive design, facilitating the creation of custom styles.
 -  Zustand: For simple and effective state management in the application.
 -  TypeScript: For static typing that improves code quality and maintainability.
+<p align="center">
+<a href="https://www.mysql.com/" target="_blank"><img src="https://miro.medium.com/v2/resize:fit:1400/0*qquBXM1d9ha0YjcM.png" width="300" alt="MySql image"></a>
+<a href="https://jwt.io/" target="_blank"><img src="https://smartastudio.b-cdn.net/wp-content/uploads/2024/02/tailwindcss-smartastudio.jpg" width="300" alt="JWT logo"></a>
+</p>
 ## Features
 -  Login: Secure authentication to access the admin panel.
 -  Admin Panel: Interface for managing users, allowing for creating, reading, updating, and deleting records.
 ## Project Structure
 The code structure is organized in a way that allows for easy maintenance and scalability.
+
+# Instructions
+
+Clone or download the project and then follow these steps, remember that you must have npm and nodejs on your machine to be able to start the application.
+
+- Install dependencies
+
+We install the necessary dependencies with the following command.
+
+```bash
+npm install
+```
+
+- Run project
+
+To run the project run the following command and follow the instructions for the port where you will be able to see it.
+
+```bash
+npm run dev
+```
 
 # React + TypeScript + Vite
 
