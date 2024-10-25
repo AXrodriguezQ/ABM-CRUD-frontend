@@ -1,11 +1,20 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { userRequest, deleteUserRequest } from '../api/auth'
 import { useNavigate } from 'react-router-dom';
 import NavBar from './NavBar'
 
+interface User {
+    id: number;
+    name: string;
+    lastname: string;
+    email: string;
+    phone: string;
+    is_restricted: string;
+}
+
 const DashboardComponent = () => {
 
-    const [data, setData] = useState([]);
+    const [data, setData] = useState<User[]>([]);
 
     const navigate = useNavigate();
 
@@ -23,11 +32,11 @@ const DashboardComponent = () => {
         fetchData();
     }, []);
 
-    const handleEditUser = (id) => {
+    const handleEditUser = (id: number | string) => {
         navigate(`/updateUser/${id}`);
     };
 
-    const deleteUser = async (id) => {
+    const deleteUser = async (id: number | string) => {
         try {
             const res = confirm('¿Estas seguro de eliminar este usuario?');
             if (res) {

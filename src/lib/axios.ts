@@ -1,17 +1,17 @@
 import axios from 'axios';
-import { useAuthStore } from '../store/auth'
+import { useAuthStore } from '../store/auth';
 
 const authApi = axios.create({
-    baseUrl: 'http://127.0.0.1:8000/api',
+    baseURL: 'http://127.0.0.1:8000/api',
     withCredentials: true,
-})
+});
 
 authApi.interceptors.request.use(config => {
-    const token = useAuthStore.getState().token
-    config.headers = {
-        Authorization: `Bearer ${token}`
+    const token = useAuthStore.getState().token;
+    if (token) {
+        config.headers.set('Authorization', `Bearer ${token}`);
     }
-    return config
-})
+    return config;
+});
 
-export default authApi
+export default authApi;
