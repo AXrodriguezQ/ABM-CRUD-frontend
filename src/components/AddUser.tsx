@@ -25,6 +25,7 @@ const AddUserComponent = () => {
         email: '',
         phone: '',
         password: '',
+        is_restricted: 'Valid',
         created_by: payload ? parseInt(payload.sub) : null,
     });
 
@@ -36,7 +37,7 @@ const AddUserComponent = () => {
         }));
     };
 
-    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => { // Cambiado a FormEvent
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
         console.log(data);
