@@ -12,7 +12,7 @@ type Actions = {
 export const useAuthStore = create(persist<State & Actions>(
     (set) => ({
         token: '',
-        setToken: (token: string) => set((state) => ({
+        setToken: (token: string) => set(() => ({
             token
         }))
     }), {
