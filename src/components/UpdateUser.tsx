@@ -13,7 +13,7 @@ const UpdateUserComponent = () => {
         phone: '',
         password: '',
         created_by: '',
-        is_restricted: 'Valido',
+        is_restricted: '',
     });
 
     useEffect(() => {
