@@ -1,28 +1,29 @@
 import axios from "../lib/axios";
+import { URL_BASE } from "../lib/constants";
 
 export const loginRequest = ( email: string, password: string ) => {
-    return axios.post('http://127.0.0.1:8000/api/login', {
+    return axios.post(`${URL_BASE}/login`, {
         email,
         password,
     })
 }
 
 export const addUserRequest = ( body: object ) => {
-    return axios.post('http://127.0.0.1:8000/api/users',body)
+    return axios.post(`${URL_BASE}/users`,body)
 }
 
 export const updateUserRequest = ( id: string | number, body: object ) => {
-    return axios.patch(`http://127.0.0.1:8000/api/users/${id}`,body)
+    return axios.patch(`${URL_BASE}/users/${id}`,body)
 }
 
 export const userByIdRequest = ( id: string | number ) => {
-    return axios.get(`http://127.0.0.1:8000/api/users/${id}`)
+    return axios.get(`${URL_BASE}/users/${id}`)
 }
 
 export const userRequest = () => {
-    return axios.get('http://127.0.0.1:8000/api/users');
+    return axios.get(`${URL_BASE}/users`);
 }
 
 export const deleteUserRequest = ( id: string | number ) => {
-    return axios.delete(`http://127.0.0.1:8000/api/users/${id}`);
+    return axios.delete(`${URL_BASE}/users/${id}`);
 }
