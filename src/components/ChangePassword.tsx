@@ -17,6 +17,8 @@ const ChangePasswordComponent = () => {
     
     const token = localStorage.getItem('auth');
     let payload;
+
+    console.log(payload);
     
     if (token) {
         try {
