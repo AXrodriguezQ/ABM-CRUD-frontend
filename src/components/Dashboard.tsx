@@ -57,7 +57,7 @@ const DashboardComponent = () => {
         <article className='xl:w-[85%] w-full xl:ml-[15%] ml-0 p-6 space-y-4'>
             <h4 className='text-6xl md:text-8xl font-extrabold text-customColor'>Hola de nuevo!</h4>
             <p className='text-2xl md:text-4xl font-semibold'>Desde aqui puedes gestionar todos los usuarios.</p>
-            <div className='flex justify-center items-start flex-col '>
+            <div className='flex justify-center items-start flex-col'>
                 {
                     data.length === 0 ? (
                             <div className="w-full flex justify-center items-center mt-52">
@@ -65,7 +65,7 @@ const DashboardComponent = () => {
                             </div>
                         ) : (
                             data.map(element => (
-                                <div key={element.id} className='w-full flex-wrap md:flex-nowrap md:flex justify-center items-center pl-10 md:p-2 rounded-2xl gap-4 mt-6 bg-slate-50'>
+                                <div key={element.id} className='w-full flex-wrap md:flex-nowrap md:flex justify-center items-center p-6 md:p-2 rounded-2xl gap-4 mt-6 bg-slate-50'>
                                     <p className='text-2xl font-semibold w-8'>{element.id}</p>
                                     <p className='text-2xl font-semibold w-40'>{element.name}</p>
                                     <p className='text-2xl font-semibold w-40'>{element.lastname}</p>
@@ -89,6 +89,7 @@ const DashboardComponent = () => {
                         )
                     }
             </div>
+            <br /><br /><br />
         </article>
     </section>
   )

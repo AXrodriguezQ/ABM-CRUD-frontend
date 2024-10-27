@@ -130,7 +130,7 @@ const AddUserComponent = () => {
                             <button className='text-2xl py-2 rounded-2xl font-semibold w-full text-white bg-customColor hover:bg-customColorHover duration-300'>Agregar usuario</button>
                         </div>
                     </form>
-                </div>
+                </div><br /><br /><br />
             </article>
         </section>
     );
