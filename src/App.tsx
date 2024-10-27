@@ -1,5 +1,5 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom"
-import { Login, Dashboard, AddUser, UpdateUser } from "./pages"
+import { Login, Dashboard, AddUser, UpdateUser, UpdatePassword } from "./pages"
 
 function App() {
 
@@ -15,6 +15,8 @@ function App() {
         <Route path="/addUser" element={<AddUser />} />
 
         <Route path="/updateUser/:id" element={<UpdateUser />} />
+
+        <Route path="/changePassword/:id" element={<UpdatePassword />} />
 
       </Routes>
 
