@@ -53,12 +53,12 @@ const DashboardComponent = () => {
         <NavBar />
         {
             alertShow && (
-                <section className='xl:w-[85%] w-full xl:ml-[15%] ml-0 h-screen absolute flex justify-center items-center z-10'>
-                    <div className='h-1/2 w-3/4 bg-white shadow-2xl rounded-2xl flex flex-col space-y-6 justify-center items-center'>
-                        <p className='text-4xl font-semibold'>¿Estas seguro que quieres eliminar a este usuario?</p>
+                <section onClick={() => setAlertShow(false)} className='xl:w-[85%] w-full h-screen md:h-auto: xl:ml-[15%] ml-0 flex justify-center items-start -mt-[10rem] fixed md:absolute md:mt-20 z-10'>
+                    <div className='h-1/2 w-3/4 bg-white shadow-2xl hover:shadow-indigo-300 duration-300 rounded-2xl flex flex-col space-y-6 p-16 justify-center items-center'>
+                        <p className='text-2xl md:text-4xl px-1 md:px-2 font-semibold text-center'>¿Estas seguro que quieres eliminar a este usuario?</p>
                         <div className='flex justify-center items-center gap-6'>
-                            <button onClick={() => setAlertShow(false)} className='px-6 py-3 rounded-full text-2xl font-semibold text-white bg-pink-400 hover:bg-pink-800'>Cancelar</button>
-                            <button onClick={() => {deleteUser(idUser); setAlertShow(false)}} className='px-6 py-3 rounded-full text-2xl font-semibold text-white bg-green-400 hover:bg-green-800'>Eliminar</button>
+                            <button onClick={() => setAlertShow(false)} className='px-6 py-3 rounded-full text-base md:text-2xl font-semibold text-white bg-pink-400 hover:bg-pink-800'>Cancelar</button>
+                            <button onClick={() => {deleteUser(idUser); setAlertShow(false)}} className='px-6 py-3 rounded-full text-base md:text-2xl font-semibold text-white bg-green-400 hover:bg-green-800'>Eliminar</button>
                         </div>
                     </div>
                 </section>
