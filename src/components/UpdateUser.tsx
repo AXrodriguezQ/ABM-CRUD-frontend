@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react';
 import { userByIdRequest, updateUserRequest } from '../api/auth';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import NavBar from './NavBar';
 
 const UpdateUserComponent = () => {
     const { id } = useParams();
+
+    const navigate = useNavigate();
 
     const [data, setData] = useState({
         name: '',
@@ -40,9 +42,11 @@ const UpdateUserComponent = () => {
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
+        console.log(data)
+
         try {
             const resAddUser = await updateUserRequest(id || '', data);
-            if (resAddUser) alert('User updated successfully!');
+            if (resAddUser) navigate('/dashboard');
         } catch (error) {
             alert('Error al editar el usuario, intentalo nuevamente');
             console.log('Error al agregar usuario:', error);

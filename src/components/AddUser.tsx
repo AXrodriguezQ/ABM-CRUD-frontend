@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { addUserRequest } from '../api/auth';
 import NavBar from './NavBar';
+import { useNavigate } from 'react-router-dom';
 
 const decodeToken = (token: string) => {
     const payload = token.split('.')[1];
@@ -8,6 +9,9 @@ const decodeToken = (token: string) => {
 };
 
 const AddUserComponent = () => {
+
+    const navigate = useNavigate();
+
     const token = localStorage.getItem('auth');
     let payload;
 
@@ -44,7 +48,7 @@ const AddUserComponent = () => {
 
         try {
             const resAddUser = await addUserRequest(data);
-            if (resAddUser) alert('User added successfully!');
+            if (resAddUser) navigate('/dashboard');
         } catch (error) {
             alert('Error al agregar el usuario, inténtalo nuevamente');
             console.log('Error al agregar usuario:', error);
