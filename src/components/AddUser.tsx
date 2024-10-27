@@ -12,6 +12,7 @@ const AddUserComponent = () => {
 
     const navigate = useNavigate();
 
+    
     const token = localStorage.getItem('auth');
     let payload;
 
@@ -22,7 +23,8 @@ const AddUserComponent = () => {
             console.error('Error al decodificar el token:', err);
         }
     }
-
+    
+    const [alertShow, setAlertShow] = useState(false);
     const [data, setData] = useState({
         name: '',
         lastname: '',
@@ -58,6 +60,17 @@ const AddUserComponent = () => {
     return (
         <section className='flex justify-center items-center'>
             <NavBar />
+            {
+                alertShow && ( 
+                    <section onClick={() => setAlertShow(false)} className='xl:w-[85%] w-full xl:ml-[15%] h-screen absolute flex justify-center items-center z-10 bg-indigo-600 bg-opacity-25'>
+                        <div className='h-1/2 w-3/4 bg-white shadow-2xl rounded-2xl flex flex-col space-y-6 justify-center items-center'>
+                            <p className='text-4xl font-semibold'>Ups... Ha ocurrido un error inseperado</p>
+                            <p className='text-4xl font-semibold'>Intentalo mas tarde</p>
+                            <button onClick={() => {setAlertShow(false); navigate('/dashboard')}} className='px-6 py-3 rounded-full text-2xl font-semibold text-white bg-customColor hover:bg-customColorHover'>Aceptar</button>
+                        </div>
+                    </section>
+                 )
+            }
             <article className='xl:w-[85%] w-full xl:ml-[15%] ml-0 md:p-6 space-y-6'>
                 <h4 className='text-4xl md:text-8xl font-extrabold text-customColor p-6'>¡Agrega un usuario!</h4>
                 <div className='flex justify-center items-center flex-col'>

@@ -8,12 +8,12 @@ const UpdateUserComponent = () => {
 
     const navigate = useNavigate();
 
+    const [alertShow, setAlertShow] = useState(false);
     const [data, setData] = useState({
         name: '',
         lastname: '',
         email: '',
         phone: '',
-        password: '',
         created_by: '',
         is_restricted: '',
     });
@@ -56,6 +56,17 @@ const UpdateUserComponent = () => {
     return (
         <section className='flex justify-center items-center'>
             <NavBar />
+            {
+                alertShow && ( 
+                    <section onClick={() => setAlertShow(false)} className='xl:w-[85%] w-full xl:ml-[15%] ml-0 h-screen absolute flex justify-center items-center z-10 bg-indigo-600 bg-opacity-25'>
+                        <div className='h-1/2 w-3/4 bg-white shadow-2xl rounded-2xl flex flex-col space-y-6 justify-center items-center'>
+                            <p className='text-4xl font-semibold'>Ups... Ha ocurrido un error inseperado</p>
+                            <p className='text-4xl font-semibold'>Intentalo mas tarde</p>
+                            <button onClick={() => {setAlertShow(false); navigate('/dashboard')}} className='px-6 py-3 rounded-full text-2xl font-semibold text-white bg-customColor hover:bg-customColorHover'>Aceptar</button>
+                        </div>
+                    </section>
+                 )
+            }
             <article className='xl:w-[85%] w-full xl:ml-[15%] ml-0 md:p-6 space-y-6'>
                 <h4 className='text-4xl md:text-8xl font-extrabold text-customColor p-6'>Actualizar usuario!</h4>
                 <div className='flex justify-center items-center flex-col'>
@@ -116,19 +127,6 @@ const UpdateUserComponent = () => {
                             </div>
                         </div>
                         <div className='flex justify-center items-start flex-col gap-1'>
-                            <label className='text-xl font-semibold text-slate-400'>Contraseña:</label>
-                            <input 
-                                type='password'
-                                name='password' 
-                                className='w-full py-1 pt-2 px-2 border-b-2 text-xl shadow-none outline-none bg-slate-50 border-b-slate-400 focus:border-b-slate-600 duration-300' 
-                                placeholder='password' 
-                                required
-                                minLength={6}
-                                value={data.password}
-                                onChange={handleChange}
-                            />
-                        </div>
-                        <div className='flex justify-center items-start flex-col gap-1'>
                             <label className='text-xl font-semibold text-slate-400'>Estado del usuario:</label>
                             <select 
                                 name='is_restricted' 
@@ -141,7 +139,8 @@ const UpdateUserComponent = () => {
                                 <option value='Restringido'>Restringido</option>
                             </select>
                         </div>
-                        <div className='flex justify-center items-start flex-col gap-1'>
+                        <div className='flex justify-center items-start flex-col gap-4'>
+                            <button className='text-2xl py-2 rounded-2xl font-semibold w-full text-white bg-orange-400 hover:bg-orange-600 duration-300'>Cambiar contraseña</button>
                             <button className='text-2xl py-2 rounded-2xl font-semibold w-full text-white bg-customColor hover:bg-customColorHover duration-300'>Editar usuario</button>
                         </div>
                     </form>

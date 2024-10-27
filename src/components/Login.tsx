@@ -10,6 +10,8 @@ const LoginComponent = () => {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [alertShow, setAlertShow] = useState(false);
+
     const setToken = useAuthStore(state => state.setToken);
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -22,12 +24,23 @@ const LoginComponent = () => {
             window.location.href = '/dashboard';
         } catch (error) {
             console.error('Login error:', error);
-            alert('Error durante el inicio de sesión. Por favor, intenta de nuevo.');
+            setAlertShow(true);
         }
     };
 
     return (
         <section className='w-full h-screen flex-col md:flex md:flex-row justify-center items-center bg-slate-50'>
+            {
+                alertShow && ( 
+                    <section onClick={() => setAlertShow(false)} className='w-full h-screen absolute flex justify-center items-center z-10 bg-indigo-600 bg-opacity-25'>
+                        <div className='h-1/2 w-3/4 bg-white shadow-2xl rounded-2xl flex flex-col space-y-6 justify-center items-center'>
+                            <p className='text-4xl font-semibold'>Ups... Usuario o contraseña invalidos</p>
+                            <p className='text-4xl font-semibold'>Intenta nuevamente</p>
+                            <button onClick={() => setAlertShow(false)} className='px-6 py-3 rounded-full text-2xl font-semibold text-white bg-customColor hover:bg-customColorHover'>Aceptar</button>
+                        </div>
+                    </section>
+                 )
+            }
             <article className='h-[25vh] md:h-[75vh] border-r border-r-slate-300 flex justify-between bg-white items-start flex-col gap-4 md:gap-16 pr-0 md:pr-24 rounded-l-2xl'>
                 <div className='p-2 md:p-6'>
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="size-8 md:size-12">
