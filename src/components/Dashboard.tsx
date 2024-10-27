@@ -25,7 +25,8 @@ const DashboardComponent = () => {
         const fetchData = async () => {
             try {
                 const res = await userRequest();
-                setData(res.data); 
+                console.log(res);
+                setData(res.data.data); 
             } catch (err) {
                 console.log(err);
             }
