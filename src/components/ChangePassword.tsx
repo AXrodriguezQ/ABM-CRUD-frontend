@@ -29,6 +29,7 @@ const ChangePasswordComponent = () => {
     }
 
     const [alertShow, setAlertShow] = useState(false);
+    const [messageError, setMessageError] = useState('');
     const [passwords, setPasswords] = useState({
         current_password: "",
         new_password: ""
@@ -49,8 +50,14 @@ const ChangePasswordComponent = () => {
             const resAddUser = await changePasswordRequest(id || 0, passwords);
             if (resAddUser) navigate('/dashboard');
         } catch (error) {
-            setAlertShow(true);
             console.log('Error al agregar usuario:', error);
+
+            const message = typeof error === 'object' && error !== null && 'response' in error 
+            ? 'La contraseña actual no es correcta' 
+            : 'Error desconocido';
+
+            setMessageError(message);
+            setAlertShow(true);
         }
     };
 
@@ -59,11 +66,10 @@ const ChangePasswordComponent = () => {
         <NavBar />
         {
             alertShow && ( 
-                <section onClick={() => setAlertShow(false)} className='w-[80%] h-screen absolute flex justify-center items-center z-10 bg-indigo-600 bg-opacity-25'>
-                    <div className='h-1/2 w-3/4 bg-white shadow-2xl rounded-2xl flex flex-col space-y-6 justify-center items-center'>
-                        <p className='text-4xl font-semibold'>Ups... Ha ocurrido un error al cambiar la contraseña</p>
-                        <p className='text-4xl font-semibold'>Intentalo mas tarde</p>
-                        <button onClick={() => {setAlertShow(false); navigate('/dashboard')}} className='px-6 py-3 rounded-full text-2xl font-semibold text-white bg-customColor hover:bg-customColorHover'>Aceptar</button>
+                <section onClick={() => setAlertShow(false)} className='w-[80%] h-screen absolute flex justify-center items-center z-10'>
+                    <div className='h-1/2 w-full ml-14 md:ml-0 md:w-3/4 bg-white shadow-2xl rounded-2xl flex flex-col space-y-6 justify-center items-center'>
+                        <p className='text-2xl md:text-4xl px-2 font-semibold text-center'>{messageError}</p>
+                        <button onClick={() => setAlertShow(false)} className='px-6 py-3 rounded-full text-base md:text-2xl font-semibold text-white bg-customColor hover:bg-customColorHover'>Aceptar</button>
                     </div>
                 </section>
              )
@@ -98,7 +104,7 @@ const ChangePasswordComponent = () => {
                     />
                 </div>
                 <div className='flex justify-center items-start flex-col gap-1'>
-                    <button className='text-2xl py-2 px-16 rounded-2xl font-semibold w-full text-white bg-customColor hover:bg-customColorHover duration-300'>Cambiar contraseña</button>
+                    <button className='text-xl md:text-2xl py-2 px-16 rounded-2xl font-semibold w-full text-white bg-customColor hover:bg-customColorHover duration-300'>Cambiar contraseña</button>
                 </div>
             </form>
         </div><br /><br /><br />

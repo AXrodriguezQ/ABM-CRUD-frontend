@@ -25,6 +25,7 @@ const AddUserComponent = () => {
     }
     
     const [alertShow, setAlertShow] = useState(false);
+    const [messageError, setMessageError] = useState('');
     const [data, setData] = useState({
         name: '',
         lastname: '',
@@ -50,8 +51,14 @@ const AddUserComponent = () => {
             const resAddUser = await addUserRequest(data);
             if (resAddUser) navigate('/dashboard');
         } catch (error) {
-            setAlertShow(true);
             console.log('Error al agregar usuario:', error);
+
+            const message = typeof error === 'object' && error !== null && 'response' in error 
+            ? 'Al parecer el correo ya esta en uso' 
+            : 'Error desconocido';
+
+            setMessageError(message);
+            setAlertShow(true);
         }
     };
 
@@ -62,9 +69,9 @@ const AddUserComponent = () => {
                 alertShow && ( 
                     <section onClick={() => setAlertShow(false)} className='xl:w-[85%] w-full xl:ml-[15%] h-screen absolute flex justify-center items-center z-10 bg-indigo-600 bg-opacity-25'>
                         <div className='h-1/2 w-3/4 bg-white shadow-2xl rounded-2xl flex flex-col space-y-6 justify-center items-center'>
-                            <p className='text-4xl font-semibold'>Ups... Ha ocurrido un error al crear el usuario</p>
-                            <p className='text-4xl font-semibold'>Intentalo mas tarde</p>
-                            <button onClick={() => {setAlertShow(false); navigate('/dashboard')}} className='px-6 py-3 rounded-full text-2xl font-semibold text-white bg-customColor hover:bg-customColorHover'>Aceptar</button>
+                            <p className='text-2xl md:text-4xl font-semibold text-center'>Ups... Ha ocurrido un error al crear el usuario</p>
+                            <p className='text-2xl md:text-4xl font-semibold text-center'>{messageError}</p>
+                            <button onClick={() => setAlertShow(false)} className='px-6 py-3 rounded-full text-base md:text-2xl font-semibold text-white bg-customColor hover:bg-customColorHover'>Aceptar</button>
                         </div>
                     </section>
                  )
@@ -117,14 +124,16 @@ const AddUserComponent = () => {
                             <div className='flex justify-center items-start flex-col gap-1'>
                                 <label className='text-xl font-semibold text-slate-400'>Teléfono:</label>
                                 <input 
-                                    type='text' 
+                                    type='tel' 
                                     name='phone' 
                                     className='w-full py-1 pt-2 px-2 border-b-2 text-xl shadow-none outline-none bg-slate-50 border-b-slate-400 focus:border-b-slate-600 duration-300' 
                                     placeholder='phone' 
                                     required
                                     minLength={10}
+                                    maxLength={10}
                                     value={data.phone}
                                     onChange={handleChange}
+                                    pattern="[0-9]*"
                                 />
                             </div>
                         </div>

@@ -34,9 +34,9 @@ const LoginComponent = () => {
                 alertShow && ( 
                     <section onClick={() => setAlertShow(false)} className='w-full h-screen absolute flex justify-center items-center z-10 bg-indigo-600 bg-opacity-25'>
                         <div className='h-1/2 w-3/4 bg-white shadow-2xl rounded-2xl flex flex-col space-y-6 justify-center items-center'>
-                            <p className='text-4xl font-semibold'>Ups... Usuario o contraseña invalidos</p>
-                            <p className='text-4xl font-semibold'>Intenta nuevamente</p>
-                            <button onClick={() => setAlertShow(false)} className='px-6 py-3 rounded-full text-2xl font-semibold text-white bg-customColor hover:bg-customColorHover'>Aceptar</button>
+                            <p className='text-2xl md:text-4xl font-semibold text-center'>Ups... Usuario o contraseña invalidos</p>
+                            <p className='text-2xl md:text-4xl font-semibold text-center'>Intenta nuevamente</p>
+                            <button onClick={() => setAlertShow(false)} className='px-6 py-3 rounded-full text-base md:text-2xl font-semibold text-white bg-customColor hover:bg-customColorHover'>Aceptar</button>
                         </div>
                     </section>
                  )

@@ -48,8 +48,8 @@ const UpdateUserComponent = () => {
             const resAddUser = await updateUserRequest(id || '', data);
             if (resAddUser) navigate('/dashboard');
         } catch (error) {
-            alert('Error al editar el usuario, intentalo nuevamente');
             console.log('Error al agregar usuario:', error);
+            setAlertShow(true);
         }
     };
 
@@ -64,9 +64,9 @@ const UpdateUserComponent = () => {
                 alertShow && ( 
                     <section onClick={() => setAlertShow(false)} className='xl:w-[85%] w-full xl:ml-[15%] ml-0 h-screen absolute flex justify-center items-center z-10 bg-indigo-600 bg-opacity-25'>
                         <div className='h-1/2 w-3/4 bg-white shadow-2xl rounded-2xl flex flex-col space-y-6 justify-center items-center'>
-                            <p className='text-4xl font-semibold'>Ups... Ha ocurrido un error inseperado</p>
-                            <p className='text-4xl font-semibold'>Intentalo mas tarde</p>
-                            <button onClick={() => {setAlertShow(false); navigate('/dashboard')}} className='px-6 py-3 rounded-full text-2xl font-semibold text-white bg-customColor hover:bg-customColorHover'>Aceptar</button>
+                            <p className='text-2xl md:text-4xl font-semibold text-center'>Ups... Ha ocurrido un error inseperado</p>
+                            <p className='text-2xl md:text-4xl font-semibold text-center'>Intentalo mas tarde</p>
+                            <button onClick={() => setAlertShow(false)} className='px-6 py-3 rounded-full text-base md:text-2xl font-semibold text-white bg-customColor hover:bg-customColorHover'>Aceptar</button>
                         </div>
                     </section>
                  )
@@ -119,7 +119,7 @@ const UpdateUserComponent = () => {
                             <div className='flex justify-center items-start flex-col gap-1'>
                                 <label className='text-xl font-semibold text-slate-400'>Telefono:</label>
                                 <input 
-                                    type='text' 
+                                    type='tel' 
                                     name='phone' 
                                     className='w-full py-1 pt-2 px-2 border-b-2 text-xl shadow-none outline-none bg-slate-50 border-b-slate-400 focus:border-b-slate-600 duration-300' 
                                     placeholder='phone' 
@@ -127,6 +127,7 @@ const UpdateUserComponent = () => {
                                     minLength={10}
                                     value={data.phone}
                                     onChange={handleChange}
+                                    pattern="[0-9]*"
                                 />
                             </div>
                         </div>
