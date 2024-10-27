@@ -27,3 +27,7 @@ export const userRequest = () => {
 export const deleteUserRequest = ( id: string | number ) => {
     return axios.delete(`${URL_BASE}/users/${id}`);
 }
+
+export const changePasswordRequest = ( id: string | number, body: object ) => {
+    return axios.patch(`${URL_BASE}/users/password/${id}`, body);
+}

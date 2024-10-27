@@ -53,6 +53,10 @@ const UpdateUserComponent = () => {
         }
     };
 
+    const handlePasswordUser = (id: number | string | undefined) => {
+        navigate(`/changePassword/${id}`);
+    };
+
     return (
         <section className='flex justify-center items-center'>
             <NavBar />
@@ -140,7 +144,7 @@ const UpdateUserComponent = () => {
                             </select>
                         </div>
                         <div className='flex justify-center items-start flex-col gap-4'>
-                            <button className='text-2xl py-2 rounded-2xl font-semibold w-full text-white bg-orange-400 hover:bg-orange-600 duration-300'>Cambiar contraseña</button>
+                            <button onClick={() => handlePasswordUser(id)} className='text-2xl py-2 rounded-2xl font-semibold w-full text-white bg-orange-400 hover:bg-orange-600 duration-300'>Cambiar contraseña</button>
                             <button className='text-2xl py-2 rounded-2xl font-semibold w-full text-white bg-customColor hover:bg-customColorHover duration-300'>Editar usuario</button>
                         </div>
                     </form>
